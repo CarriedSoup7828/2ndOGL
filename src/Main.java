@@ -3,9 +3,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import com.jogamp.opengl.awt.GLCanvas;
 
@@ -19,11 +26,27 @@ public class Main implements Runnable, KeyListener {
     public static float rotationZ = 0f;
     public static float zoomChange = 1.0f;
     public static boolean wireFrame = false;
-
+    public static ByteBuffer pixels; // "массив" пикселей
+    public static int widthTexture; // ширина текстуры
+    public static int heightTexture; // высота тексту
+    public static double [][] H = null;
+    public static int heightMap;
+    public static int widthMap;
     public static void main(String[] args) {
         displayT.start();
     }
-
+    BufferedImage image;
+        try {
+        image = ImageIO.read(new File("map.bmp"));
+        heightMap = image.getHeight();
+        widthMap = image.getWidth();
+        H = new double[widthMap][heightMap];
+        for (int x = 0 ; x < widthMap ; x++)
+            for (int y = 0 ; y < heightMap ; y++)
+                H[x][y] = (char)image.getRGB(x,y) % 256 / 20.0;
+    } catch (IOException e){
+        e.printStackTrace();
+    }
     public void run() {
         Frame frame = new Frame("Jogl 3D Shape/Rotation");
         frame.setLocation(0,0);
