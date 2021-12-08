@@ -23,9 +23,9 @@ public class Main implements Runnable, KeyListener {
     public static float rotationZ = 0f;
     public static float zoomChange = 1.0f;
     public static boolean wireFrame = false;
-    public static ByteBuffer pixels; // "массив" пикселей
-    public static int widthTexture; // ширина текстуры
-    public static int heightTexture; // высота тексту
+//    public static ByteBuffer pixels; // "массив" пикселей
+//    public static int widthTexture; // ширина текстуры
+//    public static int heightTexture; // высота тексту
     public static double [][] H = null;
     public static int heightMap;
     public static int widthMap;
@@ -34,19 +34,20 @@ public class Main implements Runnable, KeyListener {
     }
 
 
+
     public void run() {
-        BufferedImage image;
-        try {
-            image = ImageIO.read(new File("map.jpg"));
-            heightMap = image.getHeight();
-            widthMap = image.getWidth();
-            H = new double[widthMap][heightMap];
-            for (int x = 0 ; x < widthMap ; x++)
-                for (int y = 0 ; y < heightMap ; y++)
-                    H[x][y] = (char)image.getRGB(x,y) % 256 / 20.0;
-        } catch (IOException e){
-            e.printStackTrace();
-        }
+//        BufferedImage image;
+//        try {
+//            image = ImageIO.read(new File("map.jpg"));
+//            heightMap = image.getHeight();
+//            widthMap = image.getWidth();
+//            H = new double[widthMap][heightMap];
+//            for (int x = 0 ; x < widthMap ; x++)
+//                for (int y = 0 ; y < heightMap ; y++)
+//                    H[x][y] = (char)image.getRGB(x,y) % 256 / 20.0;
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        }
         Frame frame = new Frame("Jogl 3D Shape/Rotation");
         frame.setLocation(0,0);
         GLCanvas canvas = new GLCanvas();

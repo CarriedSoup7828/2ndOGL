@@ -6,12 +6,16 @@ import com.jogamp.opengl.glu.GLU;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
 import java.io.File;
 import java.io.IOException;
 import java.awt.image.WritableRaster;
+import java.nio.ByteBuffer;
 
 public class JavaRenderer implements GLEventListener {
-
+    public static int widthTexture; // ширина текстуры
+    public static int heightTexture;
+    public static ByteBuffer pixels;
     private float angleX = 0.0f;
     private float angleY = 0.0f;
     private float angleZ = 0.0f;
@@ -86,24 +90,31 @@ public class JavaRenderer implements GLEventListener {
     }
 
 
+
     public void Land(GL2 gl) {
-        for (int x = 0; x <= 129; x++) {
-            for (int y = 0; y <= 129; y++) {
+        for (int x = 1; x < 129; x += 2) {
+            for (int y = 1; y < 129; y += 2) {
                 gl.glBegin(gl.GL_TRIANGLE_FAN);
 
-                gl.glVertex3d(x , y, 0);
-                gl.glVertex3d(x + 1, y, 0);
-                gl.glVertex3d(x + 1, y + 1, 0);
-                gl.glVertex3d(x, y + 1, 0);
-                gl.glVertex3d(x - 1, y + 1, 0);
-                gl.glVertex3d(x - 1, y, 0);
-                gl.glVertex3d(x - 1, y - 1, 0);
-                gl.glVertex3d(x, y - 1, 0);
-                gl.glVertex3d(x + 1, y - 1, 0);
-                gl.glVertex3d(x + 1, y, 0);
+                gl.glVertex3d(x, y, H[x][y]);
+                gl.glVertex3d(x + 1, y, H[x + 1][y]);
+                gl.glVertex3d(x + 1, y + 1, H[x + 1][y + 1]);
+                gl.glVertex3d(x, y + 1, H[x][y + 1]);
+                gl.glVertex3d(x - 1, y + 1, H[x - 1][y + 1]);
+                gl.glVertex3d(x - 1, y, H[x - 1][y]);
+                gl.glVertex3d(x - 1, y - 1, H[x - 1][y - 1]);
+                gl.glVertex3d(x, y - 1, H[x][y - 1]);
+                gl.glVertex3d(x + 1, y - 1, H[x + 1][y - 1]);
+                gl.glVertex3d(x + 1, y, H[x + 1][y]);
+
                 gl.glEnd();
             }
         }
+    }
+
+    public void Zfound() {
+
+
     }
 
     public void display(GLAutoDrawable gLDrawable) {
@@ -122,6 +133,11 @@ public class JavaRenderer implements GLEventListener {
         angleY += Main.rotationY;
         angleZ += Main.rotationZ;
         zoom *= Main.zoomChange;
+
+        gl.glRotated(angleX, 1, 0, 0);
+        gl.glRotated(angleY, 0, 1, 0);
+        gl.glRotated(angleZ, 0, 0, 1);
+        gl.glScaled(zoom, zoom, zoom);
         Land(gl);
     }
 
@@ -134,6 +150,12 @@ public class JavaRenderer implements GLEventListener {
         gl.glDepthFunc(GL.GL_LEQUAL);
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL.GL_NICEST);
         try {
+            image = ImageIO.read(new File("leaf.jpg"));
+            widthTexture = image.getWidth(); // ширина текстуры
+            heightTexture = image.getHeight(); // высота текстуры
+            DataBufferByte dataBufferByte =
+                    (DataBufferByte) image.getData().getDataBuffer();
+
             image = ImageIO.read(new File("map.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -143,8 +165,9 @@ public class JavaRenderer implements GLEventListener {
         for (int y = 0; y < image.getHeight(); y++)
             for (int x = 0; x < image.getWidth(); x++) {
                 r.getPixel(x, y, pixel);
-                H[x][y] = pixel[0];
+                H[x][y] = pixel[0] / 20.0;
             }
+
     }
 
     public void reshape(GLAutoDrawable gLDrawable, int x,
