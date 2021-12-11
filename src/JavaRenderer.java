@@ -23,6 +23,7 @@ public class JavaRenderer implements GLEventListener {
     private static final GLU glu = new GLU();
     private BufferedImage image; // будем здесь хранить картинку
     public static double[][] H = new double[129][129];
+    private int [] textureId;
 
     public void sphere(GL2 gl) {
         double R0 = 0.7;
@@ -90,26 +91,67 @@ public class JavaRenderer implements GLEventListener {
     }
 
 
-
     public void Land(GL2 gl) {
-        for (int x = 1; x < 129; x += 2) {
-            for (int y = 1; y < 129; y += 2) {
-                gl.glBegin(gl.GL_TRIANGLE_FAN);
+//        for (int x = 1; x < 129; x += 2) {
+//            for (int y = 1; y < 129; y += 2) {
+//                gl.glBegin(gl.GL_TRIANGLE_FAN);
+//
+//                gl.glVertex3d(x, y, H[x][y]);
+//                gl.glVertex3d(x + 1, y, H[x + 1][y]);
+//                gl.glVertex3d(x + 1, y + 1, H[x + 1][y + 1]);
+//                gl.glVertex3d(x, y + 1, H[x][y + 1]);
+//                gl.glVertex3d(x - 1, y + 1, H[x - 1][y + 1]);
+//                gl.glVertex3d(x - 1, y, H[x - 1][y]);
+//                gl.glVertex3d(x - 1, y - 1, H[x - 1][y - 1]);
+//                gl.glVertex3d(x, y - 1, H[x][y - 1]);
+//                gl.glVertex3d(x + 1, y - 1, H[x + 1][y - 1]);
+//                gl.glVertex3d(x + 1, y, H[x + 1][y]);
+//
+//                gl.glEnd();
+//            }
+//        }
+        gl.glBegin(gl.GL_QUADS);
+        gl.glTexCoord2f(0.25f, 0.62f);          gl.glVertex3f(-1f, -1f, -0.5f);
+        gl.glTexCoord2f(0.5f, 0.62f);          gl.glVertex3f(-1f, 1f, -0.5f);
+        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(1f, 1f, -0.5f);
+        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(1f, -1f, -0.5f);
+        gl.glEnd();
 
-                gl.glVertex3d(x, y, H[x][y]);
-                gl.glVertex3d(x + 1, y, H[x + 1][y]);
-                gl.glVertex3d(x + 1, y + 1, H[x + 1][y + 1]);
-                gl.glVertex3d(x, y + 1, H[x][y + 1]);
-                gl.glVertex3d(x - 1, y + 1, H[x - 1][y + 1]);
-                gl.glVertex3d(x - 1, y, H[x - 1][y]);
-                gl.glVertex3d(x - 1, y - 1, H[x - 1][y - 1]);
-                gl.glVertex3d(x, y - 1, H[x][y - 1]);
-                gl.glVertex3d(x + 1, y - 1, H[x + 1][y - 1]);
-                gl.glVertex3d(x + 1, y, H[x + 1][y]);
+        gl.glBegin(gl.GL_QUADS);
+        gl.glTexCoord2f(0f, 0.62f);          gl.glVertex3f(-1f, -1f, 0.5f);
+        gl.glTexCoord2f(0.25f, 0.62f);          gl.glVertex3f(-1f, 1f, 0.5f);
+        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(-1f, 1f, -0.5f);
+        gl.glTexCoord2f(0f, 0.33f);         gl.glVertex3f(-1f, -1f, -0.5f);
+        gl.glEnd();
 
-                gl.glEnd();
-            }
-        }
+        gl.glBegin(gl.GL_QUADS);
+        gl.glTexCoord2f(0.25f, 0.62f);          gl.glVertex3f(-1f, -1f, 0.5f);
+        gl.glTexCoord2f(0.5f, 0.62f);          gl.glVertex3f(-1f, 1f, 0.5f);
+        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(1f, 1f, 0.5f);
+        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(1f, -1f, 0.5f);
+        gl.glEnd();
+
+        gl.glBegin(gl.GL_QUADS);
+        gl.glTexCoord2f(0.25f, 0.62f);         gl.glVertex3f(1f, -1f, 0.5f);
+        gl.glTexCoord2f(0.5f, 0.62f);          gl.glVertex3f(1f, 1f, 0.5f);
+        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(1f, 1f, -0.5f);
+        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(1f, -1f, -0.5f);
+
+        gl.glEnd();
+
+        gl.glBegin(gl.GL_QUADS);
+        gl.glTexCoord2f(0.25f, 0.62f);          gl.glVertex3f(-1f, 1f, -0.5f);
+        gl.glTexCoord2f(0.5f, 0.62f);          gl.glVertex3f(1f, 1f, -0.5f);
+        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(1f, 1f, 0.5f);
+        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(-1f, 1f, 0.5f);
+        gl.glEnd();
+
+        gl.glBegin(gl.GL_QUADS);
+        gl.glTexCoord2f(0.25f, 0.62f);          gl.glVertex3f(-1f, -1f, -0.5f);
+        gl.glTexCoord2f(0.5f, 0.62f);          gl.glVertex3f(1f, -1f, -0.5f);
+        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(1f, -1f, 0.5f);
+        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(-1f, -1f, 0.5f);
+        gl.glEnd();
     }
 
     public void Zfound() {
@@ -150,24 +192,54 @@ public class JavaRenderer implements GLEventListener {
         gl.glDepthFunc(GL.GL_LEQUAL);
         gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL.GL_NICEST);
         try {
-            image = ImageIO.read(new File("leaf.jpg"));
+            /*image = ImageIO.read(new File("leaf.jpg"));
             widthTexture = image.getWidth(); // ширина текстуры
             heightTexture = image.getHeight(); // высота текстуры
             DataBufferByte dataBufferByte =
-                    (DataBufferByte) image.getData().getDataBuffer();
+                    (DataBufferByte) image.getData().getDataBuffer();*/
 
             image = ImageIO.read(new File("map.jpg"));
+            WritableRaster r = image.getRaster();
+            int[] pixel = new int[3];
+            for (int y = 0; y < image.getHeight(); y++)
+                for (int x = 0; x < image.getWidth(); x++) {
+                    r.getPixel(x, y, pixel);
+                    H[x][y] = pixel[0] / 20.0;
+                }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        WritableRaster r = image.getRaster();
-        int[] pixel = new int[3];
-        for (int y = 0; y < image.getHeight(); y++)
-            for (int x = 0; x < image.getWidth(); x++) {
-                r.getPixel(x, y, pixel);
-                H[x][y] = pixel[0] / 20.0;
+        try {
+            image = ImageIO.read(new File("leaf1.jpg"));
+            widthTexture = image.getWidth(); // ширина текстуры
+            heightTexture = image.getHeight(); // высота текстуры
+            // извлечение пикселей из считанного изображения
+            DataBufferByte dataBufferByte =
+                    (DataBufferByte) image.getData().getDataBuffer();
+            // приведение их к подходящему внутреннему виду
+            pixels = ByteBuffer.wrap(dataBufferByte.getData());
+            byte r, b; // временные переменные – яркость синего и красного
+            // перебираем все пиксели изображения
+            for (int i = 0; i < heightTexture * widthTexture; i++) {
+                // меняем местами синюю и красную компоненты
+                b = pixels.get(3 * i);
+                r = pixels.get(3 * i + 2);
+                pixels.put(3 * i, r);
+                pixels.put(3 * i + 2, b);
             }
-
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        textureId = new int[1]; // создаем массив для хранения номера текстуры
+        gl.glGenTextures(1, textureId, 0); // Получаем свободный ID текстуры
+        gl.glEnable(GL.GL_TEXTURE_2D); // Разрешаем текстурирование
+        gl.glBindTexture(GL.GL_TEXTURE_2D, textureId[0]); // выбираем ID текстуры
+// устанавливаем параметры выбора пискеля при увеличении/уменьшении текстуры
+        gl.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MIN_FILTER, GL.GL_LINEAR);
+        gl.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MAG_FILTER, GL.GL_LINEAR);
+// загружаем пиксели текстуры в текущий выбранный ID текстуры
+        gl.glTexImage2D(GL.GL_TEXTURE_2D, 0, GL.GL_RGBA, widthTexture,
+                heightTexture, 0, GL.GL_RGB, GL.GL_UNSIGNED_BYTE, pixels);
     }
 
     public void reshape(GLAutoDrawable gLDrawable, int x,
