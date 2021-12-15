@@ -24,6 +24,7 @@ public class JavaRenderer implements GLEventListener {
     private BufferedImage image; // будем здесь хранить картинку
     public static double[][] H = new double[129][129];
     private int [] textureId;
+    private int listNum = 0;
 
     public void sphere(GL2 gl) {
         double R0 = 0.7;
@@ -92,6 +93,9 @@ public class JavaRenderer implements GLEventListener {
 
 
     public void Land(GL2 gl) {
+//        int listNum= gl.glGenLists(1);
+//        gl.glNewList(1, 1);
+//        gl.glNewList(listNum, GL2.GL_COMPILE);
 //        for (int x = 1; x < 129; x += 2) {
 //            for (int y = 1; y < 129; y += 2) {
 //                gl.glBegin(gl.GL_TRIANGLE_FAN);
@@ -110,48 +114,51 @@ public class JavaRenderer implements GLEventListener {
 //                gl.glEnd();
 //            }
 //        }
+        gl.glEnable(GL.GL_TEXTURE_2D);
+        gl.glBindTexture(GL.GL_TEXTURE_2D, textureId[0]);
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0.25f, 0.62f);          gl.glVertex3f(-1f, -1f, -0.5f);
-        gl.glTexCoord2f(0.5f, 0.62f);          gl.glVertex3f(-1f, 1f, -0.5f);
-        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(1f, 1f, -0.5f);
-        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(1f, -1f, -0.5f);
+        gl.glTexCoord2f(0.25f, 0.68f);          gl.glVertex3f(-30f, -30f, -30f);
+        gl.glTexCoord2f(0.5f, 0.68f);          gl.glVertex3f(-30f, 30f, -30f);
+        gl.glTexCoord2f(0.5f, 0.34f);         gl.glVertex3f(30f, 30f, -30f);
+        gl.glTexCoord2f(0.25f, 0.34f);         gl.glVertex3f(30f, -30f, -30f);
         gl.glEnd();
 
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0f, 0.62f);          gl.glVertex3f(-1f, -1f, 0.5f);
-        gl.glTexCoord2f(0.25f, 0.62f);          gl.glVertex3f(-1f, 1f, 0.5f);
-        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(-1f, 1f, -0.5f);
-        gl.glTexCoord2f(0f, 0.33f);         gl.glVertex3f(-1f, -1f, -0.5f);
+        gl.glTexCoord2f(0f, 0.68f);          gl.glVertex3f(-30f, -30f, 30f);
+        gl.glTexCoord2f(0.25f, 0.68f);          gl.glVertex3f(-30f, 30f, 30f);
+        gl.glTexCoord2f(0.25f, 0.34f);         gl.glVertex3f(-30f, 30f, -30f);
+        gl.glTexCoord2f(0f, 0.34f);         gl.glVertex3f(-30f, -30f, -30f);
         gl.glEnd();
 
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0.25f, 0.62f);          gl.glVertex3f(-1f, -1f, 0.5f);
-        gl.glTexCoord2f(0.5f, 0.62f);          gl.glVertex3f(-1f, 1f, 0.5f);
-        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(1f, 1f, 0.5f);
-        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(1f, -1f, 0.5f);
+        gl.glTexCoord2f(0.75f, 0.68f);          gl.glVertex3f(-30f, -30f, 30f);
+        gl.glTexCoord2f(1f, 0.68f);          gl.glVertex3f(-30f, 30f, 30f);
+        gl.glTexCoord2f(1f, 0.34f);         gl.glVertex3f(30f, 30f, 30f);
+        gl.glTexCoord2f(0.75f, 0.34f);         gl.glVertex3f(30f, -30f, 30f);
         gl.glEnd();
 
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0.25f, 0.62f);         gl.glVertex3f(1f, -1f, 0.5f);
-        gl.glTexCoord2f(0.5f, 0.62f);          gl.glVertex3f(1f, 1f, 0.5f);
-        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(1f, 1f, -0.5f);
-        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(1f, -1f, -0.5f);
+        gl.glTexCoord2f(0.5f, 0.68f);         gl.glVertex3f(30f, -30f, 30f);
+        gl.glTexCoord2f(0.75f, 0.68f);          gl.glVertex3f(30f, 30f, 30f);
+        gl.glTexCoord2f(0.75f, 0.34f);         gl.glVertex3f(30f, 30f, -30f);
+        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(30f, -30f, -30f);
 
         gl.glEnd();
 
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0.25f, 0.62f);          gl.glVertex3f(-1f, 1f, -0.5f);
-        gl.glTexCoord2f(0.5f, 0.62f);          gl.glVertex3f(1f, 1f, -0.5f);
-        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(1f, 1f, 0.5f);
-        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(-1f, 1f, 0.5f);
+        gl.glTexCoord2f(0.25f, 0.68f);          gl.glVertex3f(-30f, 30f, -30f);
+        gl.glTexCoord2f(0.25f, 1f);          gl.glVertex3f(30f, 30f, -30f);
+        gl.glTexCoord2f(0.5f, 1f);         gl.glVertex3f(30f, 30f, 30f);
+        gl.glTexCoord2f(0.5f, 0.68f);         gl.glVertex3f(-30f, 30f, 30f);
         gl.glEnd();
 
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0.25f, 0.62f);          gl.glVertex3f(-1f, -1f, -0.5f);
-        gl.glTexCoord2f(0.5f, 0.62f);          gl.glVertex3f(1f, -1f, -0.5f);
-        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(1f, -1f, 0.5f);
-        gl.glTexCoord2f(0.25f, 0.33f);         gl.glVertex3f(-1f, -1f, 0.5f);
+        gl.glTexCoord2f(0.25f, 0.34f);          gl.glVertex3f(-30f, -30f, -30f);
+        gl.glTexCoord2f(0.5f, 0.34f);          gl.glVertex3f(30f, -30f, -30f);
+        gl.glTexCoord2f(0.5f, 0f);         gl.glVertex3f(30f, -30f, 30f);
+        gl.glTexCoord2f(0.25f, 0f);         gl.glVertex3f(-30f, -30f, 30f);
         gl.glEnd();
+//        gl.glEndList();
     }
 
     public void Zfound() {
@@ -160,6 +167,8 @@ public class JavaRenderer implements GLEventListener {
     }
 
     public void display(GLAutoDrawable gLDrawable) {
+
+
         final GL2 gl = gLDrawable.getGL().getGL2();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT);
         gl.glClear(GL.GL_DEPTH_BUFFER_BIT);
@@ -181,9 +190,12 @@ public class JavaRenderer implements GLEventListener {
         gl.glRotated(angleZ, 0, 0, 1);
         gl.glScaled(zoom, zoom, zoom);
         Land(gl);
+        gl.glCallList(listNum);
     }
 
     public void init(GLAutoDrawable gLDrawable) {
+
+
         final GL2 gl = gLDrawable.getGL().getGL2();
         gl.glShadeModel(GL2.GL_SMOOTH);
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -210,7 +222,7 @@ public class JavaRenderer implements GLEventListener {
             e.printStackTrace();
         }
         try {
-            image = ImageIO.read(new File("leaf1.jpg"));
+            image = ImageIO.read(new File("leaf2.jpg"));
             widthTexture = image.getWidth(); // ширина текстуры
             heightTexture = image.getHeight(); // высота текстуры
             // извлечение пикселей из считанного изображения
@@ -240,6 +252,31 @@ public class JavaRenderer implements GLEventListener {
 // загружаем пиксели текстуры в текущий выбранный ID текстуры
         gl.glTexImage2D(GL.GL_TEXTURE_2D, 0, GL.GL_RGBA, widthTexture,
                 heightTexture, 0, GL.GL_RGB, GL.GL_UNSIGNED_BYTE, pixels);
+
+        listNum= gl.glGenLists(1);
+        gl.glNewList(listNum, gl.GL_COMPILE);
+        gl.glColor3f(1,1,1);
+        gl.glDisable(GL.GL_TEXTURE_2D);
+
+//        for (int x = 1; x < 129; x += 2) {
+//            for (int y = 1; y < 129; y += 2) {
+//                gl.glBegin(gl.GL_TRIANGLE_FAN);
+//
+//                gl.glVertex3d(x, y, H[x][y]);
+//                gl.glVertex3d(x + 1, y, H[x + 1][y]);
+//                gl.glVertex3d(x + 1, y + 1, H[x + 1][y + 1]);
+//                gl.glVertex3d(x, y + 1, H[x][y + 1]);
+//                gl.glVertex3d(x - 1, y + 1, H[x - 1][y + 1]);
+//                gl.glVertex3d(x - 1, y, H[x - 1][y]);
+//                gl.glVertex3d(x - 1, y - 1, H[x - 1][y - 1]);
+//                gl.glVertex3d(x, y - 1, H[x][y - 1]);
+//                gl.glVertex3d(x + 1, y - 1, H[x + 1][y - 1]);
+//                gl.glVertex3d(x + 1, y, H[x + 1][y]);
+//
+//                gl.glEnd();
+//            }
+//        }
+        gl.glEndList();
     }
 
     public void reshape(GLAutoDrawable gLDrawable, int x,
@@ -252,7 +289,7 @@ public class JavaRenderer implements GLEventListener {
         gl.glViewport(0, 0, 1920, 1080);
         gl.glMatrixMode(GL2.GL_PROJECTION);
         gl.glLoadIdentity();
-        glu.gluPerspective(50.0f, h, 1.0, 1000.0);
+        glu.gluPerspective(50.0f, h, 0.1, 1000.0);
         gl.glMatrixMode(GL2.GL_MODELVIEW);
         gl.glLoadIdentity();
     }
