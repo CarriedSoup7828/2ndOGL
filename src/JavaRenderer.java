@@ -117,46 +117,46 @@ public class JavaRenderer implements GLEventListener {
         gl.glEnable(GL.GL_TEXTURE_2D);
         gl.glBindTexture(GL.GL_TEXTURE_2D, textureId[0]);
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0.25f, 0.68f);          gl.glVertex3f(-30f, -30f, -30f);
-        gl.glTexCoord2f(0.5f, 0.68f);          gl.glVertex3f(-30f, 30f, -30f);
-        gl.glTexCoord2f(0.5f, 0.34f);         gl.glVertex3f(30f, 30f, -30f);
-        gl.glTexCoord2f(0.25f, 0.34f);         gl.glVertex3f(30f, -30f, -30f);
+        gl.glTexCoord2f(0.25f, 0.68f);          gl.glVertex3f(-30f, 30f, 30f);
+        gl.glTexCoord2f(0.5f, 0.68f);          gl.glVertex3f(30f, 30f, 30f);
+        gl.glTexCoord2f(0.5f, 0.34f);         gl.glVertex3f(30f, -30f, 30f);
+        gl.glTexCoord2f(0.25f, 0.34f);         gl.glVertex3f(-30f, -30f, 30f);
         gl.glEnd();
 
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0f, 0.68f);          gl.glVertex3f(-30f, -30f, 30f);
+        gl.glTexCoord2f(0f, 0.68f);          gl.glVertex3f(-30f, 30f, -30f);
         gl.glTexCoord2f(0.25f, 0.68f);          gl.glVertex3f(-30f, 30f, 30f);
-        gl.glTexCoord2f(0.25f, 0.34f);         gl.glVertex3f(-30f, 30f, -30f);
+        gl.glTexCoord2f(0.25f, 0.34f);         gl.glVertex3f(-30f, -30f, 30f);
         gl.glTexCoord2f(0f, 0.34f);         gl.glVertex3f(-30f, -30f, -30f);
         gl.glEnd();
 
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0.75f, 0.68f);          gl.glVertex3f(-30f, -30f, 30f);
-        gl.glTexCoord2f(1f, 0.68f);          gl.glVertex3f(-30f, 30f, 30f);
-        gl.glTexCoord2f(1f, 0.34f);         gl.glVertex3f(30f, 30f, 30f);
-        gl.glTexCoord2f(0.75f, 0.34f);         gl.glVertex3f(30f, -30f, 30f);
+        gl.glTexCoord2f(0.75f, 0.68f);          gl.glVertex3f(30f, 30f, -30f);
+        gl.glTexCoord2f(1f, 0.68f);          gl.glVertex3f(-30f, 30f, -30f);
+        gl.glTexCoord2f(1f, 0.34f);         gl.glVertex3f(-30f, -30f, -30f);
+        gl.glTexCoord2f(0.75f, 0.34f);         gl.glVertex3f(30f, -30f, -30f);
         gl.glEnd();
 
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0.5f, 0.68f);         gl.glVertex3f(30f, -30f, 30f);
-        gl.glTexCoord2f(0.75f, 0.68f);          gl.glVertex3f(30f, 30f, 30f);
-        gl.glTexCoord2f(0.75f, 0.34f);         gl.glVertex3f(30f, 30f, -30f);
-        gl.glTexCoord2f(0.5f, 0.33f);         gl.glVertex3f(30f, -30f, -30f);
+        gl.glTexCoord2f(0.5f, 0.34f);          gl.glVertex3f(30f, -30f, 30f);
+        gl.glTexCoord2f(0.5f, 0.68f);         gl.glVertex3f(30f, 30f, 30f);
+        gl.glTexCoord2f(0.75f, 0.68f);           gl.glVertex3f(30f, 30f, -30f);
+        gl.glTexCoord2f(0.75f, 0.34f);       gl.glVertex3f(30f, -30f, -30f);
 
         gl.glEnd();
 
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0.25f, 0.68f);          gl.glVertex3f(-30f, 30f, -30f);
-        gl.glTexCoord2f(0.25f, 1f);          gl.glVertex3f(30f, 30f, -30f);
-        gl.glTexCoord2f(0.5f, 1f);         gl.glVertex3f(30f, 30f, 30f);
-        gl.glTexCoord2f(0.5f, 0.68f);         gl.glVertex3f(-30f, 30f, 30f);
+        gl.glTexCoord2f(0.25f, 0.68f);          gl.glVertex3f(-30f, 30f, 30f);
+        gl.glTexCoord2f(0.25f, 1f);          gl.glVertex3f(-30f, 30f, -30f);
+        gl.glTexCoord2f(0.5f, 1f);         gl.glVertex3f(30f, 30f, -30f);
+        gl.glTexCoord2f(0.5f, 0.68f);         gl.glVertex3f(30f, 30f, 30f);
         gl.glEnd();
 
         gl.glBegin(gl.GL_QUADS);
-        gl.glTexCoord2f(0.25f, 0.34f);          gl.glVertex3f(-30f, -30f, -30f);
-        gl.glTexCoord2f(0.5f, 0.34f);          gl.glVertex3f(30f, -30f, -30f);
-        gl.glTexCoord2f(0.5f, 0f);         gl.glVertex3f(30f, -30f, 30f);
-        gl.glTexCoord2f(0.25f, 0f);         gl.glVertex3f(-30f, -30f, 30f);
+        gl.glTexCoord2f(0.25f, 0.34f);          gl.glVertex3f(-30f, -30f, 30f);
+        gl.glTexCoord2f(0.5f, 0.34f);          gl.glVertex3f(30f, -30f, 30f);
+        gl.glTexCoord2f(0.5f, 0f);         gl.glVertex3f(30f, -30f, -30f);
+        gl.glTexCoord2f(0.25f, 0f);         gl.glVertex3f(-30f, -30f, -30f);
         gl.glEnd();
 //        gl.glEndList();
     }
@@ -289,7 +289,7 @@ public class JavaRenderer implements GLEventListener {
         gl.glViewport(0, 0, 1920, 1080);
         gl.glMatrixMode(GL2.GL_PROJECTION);
         gl.glLoadIdentity();
-        glu.gluPerspective(50.0f, h, 0.1, 1000.0);
+        glu.gluPerspective(90.0f, h, 0.1, 1000.0);
         gl.glMatrixMode(GL2.GL_MODELVIEW);
         gl.glLoadIdentity();
     }
